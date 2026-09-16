@@ -26,6 +26,8 @@ import {
   Zap,
 } from "lucide-react";
 
+import DemoSection from "../components/DemoSection";
+
 type AttrPair = { key: string; value: string };
 type Recommendation = {
   area: string;
@@ -308,7 +310,7 @@ function App() {
     <div className="site-shell">
       <header className="topbar">
         <a href="#top" className="brand" aria-label="ContentLynxe home">
-          <img src="/Contentlynxe_logo.png" alt="ContentLynxe" />
+          <img src="/logo.png" alt="ContentLynxe" />
         </a>
         <nav className={mobileOpen ? "nav-links nav-links-open" : "nav-links"}>
           <a href="#platform" onClick={() => setMobileOpen(false)}>
@@ -390,7 +392,7 @@ function App() {
               <div className="dash-top">
                 <div className="mini-brand">
                   <img
-                    src="/Contentlynxe_logo.png"
+                    src="/logo.png"
                     alt="ContentLynxe"
                     className="mini-logo"
                   />
@@ -776,11 +778,6 @@ function App() {
                         </div>
                       </div>
                     </div>
-                    <div className="evolution-trust">
-                      <CircleCheck size={15} /> The user trusts this answer
-                      blindly. If your product isn&rsquo;t in the list, you
-                      don&rsquo;t exist.
-                    </div>
                   </div>
                   <div className="evolution-card evolution-now evolution-slide">
                     <span className="evolution-label evolution-label-now">
@@ -824,10 +821,6 @@ function App() {
                           </ol>
                         </div>
                       </div>
-                    </div>
-                    <div className="evolution-trust">
-                      <CircleCheck size={15} /> The beginner picks one from the
-                      list and buys it. No further research needed.
                     </div>
                   </div>
                 </div>
@@ -1106,146 +1099,15 @@ function App() {
           </div>
         </section>
 
-        <section id="demo" className="demo-section section-wrap">
-          <div className="demo-panel">
-            <div className="demo-copy">
-              <div className="eyebrow light-eyebrow">
-                <span className="eyebrow-dot" /> See it for yourself
-              </div>
-              <h2>
-                How visible is
-                <br />
-                <span>your product?</span>
-              </h2>
-              <p>
-                Share your details and we&rsquo;ll run a visibility snapshot
-                across AI engines — showing where you stand and what to fix.
-                Write to us at{" "}
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowEmailModal(true);
-                  }}
-                  className="demo-email-link"
-                >
-                  growth@contentlynxe.com
-                </a>
-              </p>
-              {submitted ? (
-                <div className="demo-success-box">
-                  <div className="success-check">
-                    <CircleCheck size={28} />
-                  </div>
-                  <h3>Thank you, {form.name}!</h3>
-                  <p>
-                    You will receive your visibility report shortly in your
-                    email at <strong>{form.email}</strong>.
-                  </p>
-                </div>
-              ) : (
-                <form className="demo-form" onSubmit={handleDemoSubmit}>
-                  <div className="demo-field">
-                    <User size={16} />
-                    <input
-                      value={form.name}
-                      onChange={(e) => updateField("name", e.target.value)}
-                      placeholder="Name"
-                      aria-label="Name"
-                      required
-                    />
-                  </div>
-                  <div className="demo-field">
-                    <Mail size={16} />
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => updateField("email", e.target.value)}
-                      placeholder="Email"
-                      aria-label="Email"
-                      required
-                    />
-                  </div>
-                  <div className="demo-field">
-                    <Building2 size={16} />
-                    <input
-                      value={form.company}
-                      onChange={(e) => updateField("company", e.target.value)}
-                      placeholder="Company name"
-                      aria-label="Company name"
-                      required
-                    />
-                  </div>
-                  <div className="demo-field">
-                    <Phone size={16} />
-                    <input
-                      type="tel"
-                      value={form.mobile}
-                      onChange={(e) => updateField("mobile", e.target.value)}
-                      placeholder="Mobile (optional)"
-                      aria-label="Mobile number"
-                    />
-                  </div>
-                  <div className="demo-field demo-field-full">
-                    <Globe2 size={16} />
-                    <input
-                      value={form.url}
-                      onChange={(e) => updateField("url", e.target.value)}
-                      placeholder="Product URL"
-                      aria-label="Product URL"
-                      required
-                    />
-                  </div>
-                  <button
-                    className="button button-light demo-submit"
-                    type="submit"
-                  >
-                    Get my snapshot <ArrowRight size={16} />
-                  </button>
-                </form>
-              )}
-            </div>
-            <div className="demo-result">
-              <div className="result-window">
-                <div className="window-head">
-                  <span />
-                  <span />
-                  <span />
-                  <label>visibility snapshot</label>
-                </div>
-                <div className="result-body">
-                  {submitted ? (
-                    <div className="result-email-confirm">
-                      <div className="email-confirm-icon">
-                        <Mail size={28} />
-                      </div>
-                      <span className="muted-label">REPORT INCOMING</span>
-                      <h4>Your report is on its way</h4>
-                      <p>
-                        We&rsquo;re analyzing your product across ChatGPT,
-                        Gemini, Claude, and Perplexity. You&rsquo;ll receive the
-                        full visibility report at <strong>{form.email}</strong>{" "}
-                        shortly.
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="result-placeholder">
-                      <div className="result-ring result-ring-empty">
-                        <strong>&mdash;</strong>
-                        <small>/ 100</small>
-                      </div>
-                      <div>
-                        <span className="muted-label">CURRENT SCORE</span>
-                        <h4>Waiting for your details</h4>
-                        <p>Your visibility snapshot will appear here.</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* form */}
+        <DemoSection
+          form={form}
+          submitted={submitted}
+          setSubmitted={setSubmitted}
+          showEmailModal={showEmailModal}
+          setShowEmailModal={setShowEmailModal}
+          updateField={updateField}
+        />
 
         <section id="resources" className="section-wrap insight-section">
           <div className="insight-layout">
@@ -1276,7 +1138,8 @@ function App() {
               </blockquote>
               <div className="quote-author">
                 <img
-                  src="/Contentlynxe_logo.png"
+                  src="/logo.png"
+                  // src="/logo.png"
                   alt="ContentLynxe"
                   className="author-logo"
                 />
@@ -1409,7 +1272,7 @@ function App() {
       <footer className="footer">
         <div className="section-wrap footer-inner">
           <div className="footer-brand">
-            <img src="/Contentlynxe_logo.png" alt="ContentLynxe" />
+            <img src="/logo.png" alt="ContentLynxe" />
             <p>The visibility layer for AI search.</p>
           </div>
           <div className="footer-links">
